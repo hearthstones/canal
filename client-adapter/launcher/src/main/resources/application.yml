@@ -18,17 +18,23 @@ canal.conf:
   timeout:
   accessKey:
   secretKey:
-#  srcDataSources:
-#    defaultDS:
-#      url: jdbc:mysql://127.0.0.1:3306/mytest?useUnicode=true
-#      username: root
-#      password: 121212
+  srcDataSources:
+    defaultDS:
+      url: jdbc:mysql://49.234.56.182:3306/canal_to_es?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: 123456
   canalAdapters:
   - instance: example # canal instance Name or mq topic name
     groups:
     - groupId: g1
       outerAdapters:
       - name: logger
+      - name: es
+        hosts: 49.234.56.182:9200 # 127.0.0.1:9200 for rest mode
+        properties:
+          mode: rest # or transport
+          # security.auth: test:123456 #  only used for rest mode
+          cluster.name: docker-cluster
 #      - name: rdb
 #        key: mysql1
 #        properties:
@@ -57,10 +63,3 @@ canal.conf:
 #          hbase.zookeeper.quorum: 127.0.0.1
 #          hbase.zookeeper.property.clientPort: 2181
 #          zookeeper.znode.parent: /hbase
-#      - name: es
-#        hosts: 127.0.0.1:9300 # 127.0.0.1:9200 for rest mode
-#        properties:
-#          mode: transport # or rest
-#          # security.auth: test:123456 #  only used for rest mode
-#          cluster.name: elasticsearch
-

@@ -47,6 +47,22 @@
 
     <repositories>
         <repository>
+            <id>benwunet</id>
+            <name>Nexus Release Repository</name>
+            <url>http://10.10.0.42/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>getui-nexus</id>
+            <url>http://mvn.gt.igexin.com/nexus/content/repositories/releases/</url>
+        </repository>
+        <repository>
             <id>central</id>
             <url>http://repo1.maven.org/maven2</url>
             <releases>
@@ -396,7 +412,7 @@
                 <configuration>
                     <useSystemClassLoader>true</useSystemClassLoader>
                     <forkMode>once</forkMode>
-                    <argLine>${argline} ${jacocoArgLine}</argLine>
+<!--                    <argLine>${argline} ${jacocoArgLine}</argLine>-->
                     <systemProperties>
                         <!-- common shared -->
                     </systemProperties>
@@ -441,15 +457,25 @@
     </build>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
         <repository>
-            <id>sonatype-nexus-staging</id>
+            <id>benwunet</id>
             <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>http://10.10.0.42/repository/maven-releases/</url>
         </repository>
+        <snapshotRepository>
+            <id>benwunet</id>
+            <name>Nexus Snapshots Repository</name>
+            <url>http://10.10.0.42/repository/maven-snapshots/</url>
+        </snapshotRepository>
+<!--        <snapshotRepository>-->
+<!--            <id>sonatype-nexus-snapshots</id>-->
+<!--            <name>Sonatype Nexus Snapshots</name>-->
+<!--            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--        <repository>-->
+<!--            <id>sonatype-nexus-staging</id>-->
+<!--            <name>Nexus Release Repository</name>-->
+<!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+<!--        </repository>-->
     </distributionManagement>
 </project>

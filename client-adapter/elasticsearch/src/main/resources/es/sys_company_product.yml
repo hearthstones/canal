@@ -1,0 +1,16 @@
+dataSourceKey: defaultDS
+destination: example
+groupId: g1
+esMapping:
+  _index: sys_company_product  #es的索引名称
+  _type: doc
+  _id: _id  # es的_id
+  upsert: true
+  # sql映射
+  sql: "SELECT id as _id, a.product_id, a.company_id, 
+        a.product_name, a.product_price, a.product_url, a.product_detail, a.product_link, a.product_status, 
+        a.auth_user_id, a.gmt_auth_time, a.reject_reason, 
+        a.operator_id, a.modifier_id, a.gmt_create, a.gmt_modified
+        FROM sys_company_product a"
+#   etlCondition: "where gmt_modified>={}"
+  commitBatch: 3000  # 提交批大小
