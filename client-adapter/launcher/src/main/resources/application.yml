@@ -20,7 +20,7 @@ canal.conf:
   secretKey:
   srcDataSources:
     defaultDS:
-      url: jdbc:mysql://49.234.56.182:3306/canal_to_es?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      url: jdbc:mysql://10.10.0.34:3306/ebc_sys?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       username: root
       password: 123456
   canalAdapters:
@@ -30,7 +30,7 @@ canal.conf:
       outerAdapters:
       - name: logger
       - name: es
-        hosts: 49.234.56.182:9200 # 127.0.0.1:9200 for rest mode
+        hosts: 10.10.0.34:9200 # 127.0.0.1:9200 for rest mode
         properties:
           mode: rest # or transport
           # security.auth: test:123456 #  only used for rest mode
