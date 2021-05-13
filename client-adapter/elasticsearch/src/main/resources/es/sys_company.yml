@@ -3,17 +3,18 @@ destination: example
 groupId: g1
 esMapping:
   _index: sys_company  #es的索引名称
-  _type: doc
+  _type: escompany
   _id: _id  # es的_id
   upsert: true
   # sql映射
-  sql: "select a.id as _id, a.company_id, a.company_name,
-        a.disabled, a.industry_id, a.account_status, a.auth_status,
-        a.company_type, a.company_logo, a.company_profile, a.company_video, a.company_phone,
-        a.company_email, a.company_web, a.company_capital, a.staff_size,
-        a.license_type, a.license_url, a.letter_url, a.credit_code, a.legal_representative,
-        a.company_address, a.longitude, a.latitude,
-        a.area_province_id, a.area_province_name, a.area_city_id, a.area_city_name, a.area_district_id, a.area_district_name
-        from sys_company a"
+  sql: "select a.id as _id, a.company_id companyId, a.company_name companyName,
+        a.industry_id industryId, b.industry_name industryName,
+        a.account_status accountStatus, a.auth_status authStatus,
+        a.company_type companyType, a.company_logo companyLogo, a.company_profile companyProfile, a.company_video companyVideo, a.company_phone companyPhone,
+        a.company_email companyEmail, a.company_web companyWeb, a.company_capital companyCapital, a.staff_size staffSize,
+        a.license_type licenseType, a.license_url licenseUrl, a.letter_url letterUrl, a.credit_code creditCode, a.legal_representative legalRepresentative,
+        a.company_address companyAddress, concat(a.latitude, ',', a.longitude) location,
+        a.area_province_id areaProvinceId, a.area_province_name areaProvinceName, a.area_city_id areaCityId, a.area_city_name areaCityName, a.area_district_id areaDistrictId, a.area_district_name areaDistrictName
+        from sys_company a left join sys_industry b on a.industry_id = b.industry_id"
   #   etlCondition: "where gmt_modified>={}"
   commitBatch: 3000  # 提交批大小
