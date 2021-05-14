@@ -30,7 +30,7 @@ canal.conf:
       outerAdapters:
       - name: logger
       - name: es
-        hosts: 10.10.0.34:9200 # 127.0.0.1:9200 for rest mode
+        hosts: 10.10.0.34:7200 # 127.0.0.1:9200 for rest mode
         properties:
           mode: rest # or transport
           # security.auth: test:123456 #  only used for rest mode
