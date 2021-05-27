@@ -9,7 +9,7 @@ esMapping:
   # sql映射
   sql: "select a.id as _id, a.company_id companyId, a.company_name companyName,
         a.industry_id industryId, b.industry_name industryName,
-        a.account_status accountStatus, a.auth_status authStatus,
+        a.disabled, a.account_status accountStatus, a.auth_status authStatus,
         a.company_type companyType, a.company_logo companyLogo, a.company_profile companyProfile, a.company_video companyVideo, a.company_phone companyPhone,
         a.company_email companyEmail, a.company_web companyWeb, a.company_capital companyCapital, a.staff_size staffSize,
         a.license_type licenseType, a.license_url licenseUrl, a.letter_url letterUrl, a.credit_code creditCode, a.legal_representative legalRepresentative,
